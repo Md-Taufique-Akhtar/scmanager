@@ -46,6 +46,23 @@ public String servicesPage() {
     System.out.println("services Page Loading");
 return "services";
 }
+// contact page
+@RequestMapping("/contact")
+public String contactPage(){
+    return new  String("contact");
+}
+
+@RequestMapping("/login")
+public String loginPage(){
+    return new  String("login");
+}
+
+@RequestMapping("/register")
+public String registerPage(){
+    return new  String("register");
+}
+
+
 
 }
 

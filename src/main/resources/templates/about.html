@@ -1,34 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>This is about page</h1>
-    <hr />
-    <!-- using fragment -->
-    <div
-      class="host-tag"
-      th:insert="${isLogin} ? ~{base :: parent(~{::section})}: ~{base :: test(~{::#not_logged_in})}"
-    >
-      <section>
-        <h1>User is Login</h1>
-        <h2>Dynamic Content</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-          atque soluta nostrum repellat veritatis maiores, in a officia iste ab
-          obcaecati vitae dolore eligendi cum, libero repellendus, expedita
-          beatae blanditiis facere eius unde porro. Quod ullam ducimus
-          repudiandae debitis, dicta cumque eveniet eos mollitia animi natus
-          facere? Odit, consectetur rem?
-        </p>
-        <button>Click on dynamic content</button>
-      </section>
-      <section id="not_logged_in">
-        <h1>User is not login</h1>
-      </section>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{:: title}, ~{:: script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Welcome to about page</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, dicta.</p>
     </div>
-  </body>
+    <script>console.log("about page")</script>
+</body>
 </html>

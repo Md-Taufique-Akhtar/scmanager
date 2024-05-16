@@ -51,4 +51,9 @@ private String providerUserId;
 @OneToMany(mappedBy ="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY , orphanRemoval = true)
 private List<Contact> contacts=new ArrayList<>();
 
+public static Object withDefaultPasswordEncoder() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'withDefaultPasswordEncoder'");
+}
+
 }

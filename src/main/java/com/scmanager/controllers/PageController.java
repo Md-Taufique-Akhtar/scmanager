@@ -3,6 +3,7 @@ package com.scmanager.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ import com.scmanager.helpers.MessageType;
 import com.scmanager.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 
 
@@ -73,8 +75,13 @@ public String loginPage(){
 
 @RequestMapping("/register")
 public String registerPage(Model model){
+    System.out.println("register endpoint");
     UserForm userForm=new UserForm();
+    System.out.println("new userform object created");
+
     model.addAttribute("userForm", userForm);
+    System.out.println("after userform method");
+
     userForm.setAbout("Write your self...");
   
     return "register";
@@ -83,10 +90,13 @@ public String registerPage(Model model){
 
 //processing register
 @RequestMapping(value="/do-register", method = RequestMethod.POST)
-public String processRegister(@ModelAttribute UserForm userForm , HttpSession session ){
+public String processRegister(@Valid @ModelAttribute UserForm userForm , BindingResult rBindingResult, HttpSession session ){
     System.out.println("processing register");
     //fetch form data
     //validate form data
+    if (rBindingResult.hasErrors()) {
+        return "register";
+    }
     //save to database
     //Add the Message
     Message message = Message.builder().content("Registration Successful").type(MessageType.green).build();

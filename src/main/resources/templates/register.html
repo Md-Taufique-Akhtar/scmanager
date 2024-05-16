@@ -18,7 +18,7 @@
           >
             <!-- message here -->
 
-            <div ></div>
+            <div data-th-replace="message::messagebox"></div>
 
             <h5
               class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
@@ -30,8 +30,12 @@
             </p>
 
             <!-- this is  form -->
-            <form data-th-action="@{'/do-register'}" method="post" 
-            data-th-object="${userForm}" class="mt-5">
+            <form
+              data-th-action="@{'/do-register'}"
+              method="post"
+              data-th-object="${userForm}"
+              class="mt-5"
+            >
               <!-- name  -->
 
               <div class="mb-3">
@@ -43,7 +47,7 @@
                 <input
                   type="text"
                   id="name"
-                 data-th-field="*{name}"
+                  data-th-field="*{name}"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter here"
                   required
@@ -71,9 +75,7 @@
                   placeholder="name@flowbite.com"
                   required
                 />
-                <p
-                  class="text-red-600 px-1 py-2"
-                ></p>
+                <p class="text-red-600 px-1 py-2"></p>
               </div>
               <!-- password field -->
               <div class="mb-3">
@@ -83,17 +85,13 @@
                   >New Password</label
                 >
                 <input
-                 
                   type="password"
                   id="password"
                   data-th-field="*{password}"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
-                <p
-                  
-                  class="text-red-600 px-1 py-2"
-                ></p>
+                <p class="text-red-600 px-1 py-2"></p>
               </div>
               <!-- Phone field -->
               <div class="mb-3">
@@ -110,10 +108,7 @@
                   required
                 />
 
-                <p
-                 
-                  class="text-red-600 px-1 py-2"
-                ></p>
+                <p class="text-red-600 px-1 py-2"></p>
               </div>
 
               <!-- about textarea -->
@@ -124,7 +119,6 @@
                   >Write something about yourself</label
                 >
                 <textarea
-                 
                   id="about"
                   data-th-field="*{about}"
                   rows="6"
@@ -132,10 +126,7 @@
                   placeholder="Write here..."
                 ></textarea>
 
-                <p
-                 
-                  class="text-red-600 px-1 py-2"
-                ></p>
+                <p class="text-red-600 px-1 py-2"></p>
               </div>
               <!-- button -->
 

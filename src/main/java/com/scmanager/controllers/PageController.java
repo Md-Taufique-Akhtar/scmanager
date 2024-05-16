@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.scmanager.entities.User;
 import com.scmanager.forms.UserForm;
+import com.scmanager.helpers.Message;
+import com.scmanager.helpers.MessageType;
 import com.scmanager.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -79,23 +83,26 @@ public String registerPage(Model model){
 
 //processing register
 @RequestMapping(value="/do-register", method = RequestMethod.POST)
-public String processRegister(@ModelAttribute UserForm userForm){
+public String processRegister(@ModelAttribute UserForm userForm , HttpSession session ){
     System.out.println("processing register");
     //fetch form data
     //validate form data
     //save to database
-    
+    //Add the Message
+    Message message = Message.builder().content("Registration Successful").type(MessageType.green).build();
+    session.setAttribute("message",message);
 //user service
-User user=User.builder()
-// User user = User.builder()
-        .name(userForm.getName())
-        .email(userForm.getEmail())
-        .password(userForm.getPassword())
-        .about(userForm.getAbout())
-        .phoneNumber(userForm.getPhoneNumber())
-        .profilePic(
-        "https://www.learncodewithdurgesh.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdurgesh_sir.35c6cb78.webp&w=1920&q=75")
-.build();
+
+     User user= new User();
+     user.setName(userForm.getName());
+     user.setEmail(userForm.getEmail());
+     user.setPassword(userForm.getPassword());
+     user.setAbout(userForm.getAbout());
+     user.setPhoneNumber(userForm.getPhoneNumber());
+     user.setProfilePic("https://www.learncodewithdurgesh.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdurgesh_sir.35c6cb78.webp&w=1920&q=75");
+    //  user.setStatus("Active");
+
+
     User savedUser=  userService.SaveUser(user);
     System.out.println("saved User");
     //message="Registration successfull"
